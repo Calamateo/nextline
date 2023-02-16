@@ -1,5 +1,6 @@
 const express = require('express');
 const { getTaskId, createTask, updateTask } = require('../dtos/task.dto');
+const checkApiKey = require('../middlewares/auth.handler');
 const validatorHandler = require('../middlewares/validator.handler');
 
 const TaskService = require('../services/task.service');
@@ -9,6 +10,7 @@ const router = express.Router();
 
 router.get(
   '/',
+  checkApiKey,
   async (req, res, next) => {
     try {
       const tasks = await taskService.getAllTasks();
@@ -21,6 +23,7 @@ router.get(
 
 router.get(
   '/:id',
+  checkApiKey,
   validatorHandler(getTaskId, 'params'),
   async (req, res, next) => {
     try {
@@ -35,6 +38,7 @@ router.get(
 
 router.post(
   '/',
+  checkApiKey,
   validatorHandler(createTask, 'body'),
   async (req, res, next) => {
     try {
@@ -49,6 +53,7 @@ router.post(
 
 router.delete(
   '/:id',
+  checkApiKey,
   validatorHandler(getTaskId, 'params'),
   async (req, res, next) => {
     try {
@@ -63,6 +68,7 @@ router.delete(
 
 router.put(
   '/:id',
+  checkApiKey,
   validatorHandler(getTaskId, 'params'),
   validatorHandler(updateTask, 'body'),
   async (req, res, next) => {
