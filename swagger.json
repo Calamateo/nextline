@@ -1,0 +1,22 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Nextline",
+    "description": "The purpose of task management is for a user to be able to view, add, edit or delete view, add, edit or delete the tasks that he/she needs to record on a daily basis. Y Because the system is used by multiple users, it is necessary for the API to identify the user or session that is requesting certain information. Identify the user or session that is requesting certain information.",
+    "contact": {
+      "email": "dany.calamateo@gmail.com"
+    },
+    "version": "1.0"
+  },
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "User CRUD"
+    },
+    {
+      "name": "Tasks",
+      "description": "Task CRUD, each task is assigned to a user"
+    }
+  ]
+}
