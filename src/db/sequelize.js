@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 
 const { config } = require('../config/config');
 const setupModels = require('./models');
-
+// Aqui se asigna el dialecto con el que se conecta a la DB
 const options = {
   dialect: 'postgres',
   logging: config.env === 'dev' && console.log,
