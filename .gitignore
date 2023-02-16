@@ -193,8 +193,11 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Docker volumes files
 postgres_data
 mysql_data
+
+# Config VSC
 .vscode
 
 # End of https://www.toptal.com/developers/gitignore/api/node,windows,linux,macos
