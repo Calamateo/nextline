@@ -8,6 +8,7 @@
     "start": "node src/index.js",
     "test": "jest --verbose --detectOpenHandles --forceExit --runInBand",
     "test:coverage": "jest --verbose --detectOpenHandles --forceExit --runInBand --coverage",
+    "e2e:ci": "NODE_ENV=ci jest --verbose --forceExit --runInBand",
     "seed:all": "sequelize-cli db:seed:all",
     "seed:undo": "sequelize-cli db:seed:undo:all",
     "migrations:generate": "sequelize-cli migration:generate --name",
