@@ -45,6 +45,10 @@ const TaskSchema = {
 
 // Config to create model instance
 class Task extends Model {
+  static associate() {
+    //
+  }
+
   static config(sequelize) {
     return {
       sequelize,
