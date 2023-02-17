@@ -2,21 +2,236 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Nextline",
-    "description": "The purpose of task management is for a user to be able to view, add, edit or delete view, add, edit or delete the tasks that he/she needs to record on a daily basis. Y Because the system is used by multiple users, it is necessary for the API to identify the user or session that is requesting certain information. Identify the user or session that is requesting certain information.",
+    "description": "The purpose of task management is for a user to be able to view, add, edit or delete view, add, edit or delete the tasks that he/she needs to record on a daily basis. Y Because the system is used by multiple users, it is necessary for the API to identify the user or session that is requesting certain information. Identify the user or session that is requesting certain information",
     "contact": {
       "email": "dany.calamateo@gmail.com"
     },
-    "version": "1.0"
+    "version": "1.0.0"
   },
-  "basePath": "/api/v1",
   "tags": [
     {
-      "name": "Users",
-      "description": "User CRUD"
-    },
-    {
       "name": "Tasks",
-      "description": "Task CRUD, each task is assigned to a user"
+      "desciption": "Task CRUD"
+    }
+  ],
+  "paths": {
+    "/api/v1/tasks": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get all tasks",
+        "description": "Returns brief information on all tasks",
+        "responses": {
+          "200": {
+            "description": "OK (successfully authenticated)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Task"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": null,
+                "$ref": "#/components/schemas/Task"
+              }
+            }
+          }
+        },
+        "summary": "Get all tasks",
+        "description": "Returns brief information on all tasks",
+        "responses": {
+          "200": {
+            "description": "OK (successfully authenticated)"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/v1/tasks/{id}": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "desciption": "task id"
+          }
+        ],
+        "summary": "Get a task",
+        "description": "Returns information all a task",
+        "responses": {
+          "200": {
+            "description": "OK (successfully authenticated)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tasks"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "desciption": "task id"
+          }
+        ],
+        "summary": "Delete a task",
+        "responses": {
+          "200": {
+            "description": "Task deleted successfully"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tasks"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "desciption": "task id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Task"
+              }
+            }
+          }
+        },
+        "summary": "Update a task",
+        "responses": {
+          "200": {
+            "description": "Task updated successfully"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Task": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "string"
+          },
+          "tasked": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "string"
+          },
+          "deliveryDate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "description",
+          "status",
+          "deliveryDate"
+        ],
+        "example": {
+          "title": "Create form input name",
+          "description": "Create input name of max. 20 characters",
+          "status": "success",
+          "deliveryDate": "2024-01-01T00:00:00.000Z"
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "api_key"
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
     }
   ]
 }
