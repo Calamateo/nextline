@@ -21,7 +21,7 @@ Los endpoints que deberán estar disponibles en la API son:
 - GET -> Regresa información breve de todas las tareas
 - GET -> Regresa toda la información de una tarea
 - POST -> Crear una tarea
-- PUT -> Editar una tarea
+- PUT -> Editar una tarea 
 - DELETE -> Borrar una tarea
 
 
